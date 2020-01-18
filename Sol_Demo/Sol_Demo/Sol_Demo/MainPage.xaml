@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:VM="clr-namespace:Sol_Demo"
+             mc:Ignorable="d"
+             x:Class="Sol_Demo.MainPage"
+             x:Name="contentPageObj"
+             >
+
+    <ContentPage.BindingContext>
+        <VM:MainPageViewModel x:Name="mainPageVM"></VM:MainPageViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="btnStyleOrangle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Orange" />
+                <Setter Property="BorderColor" Value="Silver" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="2" />
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+
+            <Style x:Key="btnStyleRed" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Red" />
+                <Setter Property="BorderColor" Value="Silver" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="2" />
+                <Setter Property="TextColor" Value="Gray" />
+            </Style>
+
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
+    
+    
+    <StackLayout>
+        <Button 
+            x:Name="btnSubmit" 
+            Text="Static Resource" 
+            Style="{StaticResource btnStyleOrangle}">
+        </Button>
+
+        <Button
+            x:Name="btnSubmit1"
+            Text="Dynamic Resource"
+            Style="{DynamicResource btnStyleOrangle}"
+            Command="{Binding SubmitDynamicResource}"
+            CommandParameter="{Binding Source={x:Reference contentPageObj}}"
+            >
+            
+        </Button>
+
+        <Button 
+            x:Name="btnSubmit2" 
+            Text="Global Resource" 
+            Style="{StaticResource btnStyleYellow}">
+        </Button>
+    </StackLayout>
+
+</ContentPage>
